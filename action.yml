@@ -3,6 +3,9 @@ description: "datawise build npm"
 inputs:
   NODE_VERSION:
     required: true
+  CI:
+    required: false
+    default: false
 runs:
   using: "composite"
   steps:
@@ -30,4 +33,4 @@ runs:
       shell: bash
       run: npm --cache-dir=.npm run build
       env:
-        CI: false
+        CI: ${{ inputs.CI }}
