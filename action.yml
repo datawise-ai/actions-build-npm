@@ -37,6 +37,7 @@ runs:
       if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
 
     - name: List the state of node modules
+      shell: bash
       continue-on-error: true
       run: npm list
 
