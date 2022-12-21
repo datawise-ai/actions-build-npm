@@ -20,11 +20,12 @@ runs:
       id: cache-npm
       uses: actions/cache@v3
       env:
-          cache-name: cache-node-modules      
+          cache-name: cache-node-modules2     
       with:
         path: |
           ~/.npm
-          node_modules
+          ${{ github.workspace }}/node_modules
+          ${{ github.workspace }}/.next/cache          
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
