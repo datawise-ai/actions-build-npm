@@ -20,17 +20,26 @@ runs:
       id: cache-npm
       uses: actions/cache@v3
       env:
-          cache-name: cache-node-modules2     
+          cache-name: cache-node-modules2
       with:
         path: |
           ~/.npm
           ${{ github.workspace }}/node_modules
-          ${{ github.workspace }}/.next/cache          
+          ${{ github.workspace }}/.next/cache
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+
+
+    - name: node version
+      shell: bash
+      run: node --version
+
+    - name: npm version
+      shell: bash
+      run: npm --version
 
     - name: npm install
       shell: bash
